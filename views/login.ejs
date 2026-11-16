@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="th">
+
+<head>
+    <meta charset="utf-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1">
+
+    <title>Mellow Bite | เข้าสู่ระบบ</title>
+
+    <link
+        rel="stylesheet"
+        href="/css/bootstrap.min.css">
+
+    <link
+        rel="stylesheet"
+        href="/css/style.css">
+</head>
+
+<body>
+
+<nav class="navbar navbar-expand-lg main-navbar">
+    <div class="container">
+<!-- แน็บ -->
+        <a
+            class="navbar-brand d-flex align-items-center"
+            href="/">
+
+            <span class="brand-icon">✦</span>
+            Mellow Bite
+
+        </a>
+    </div>
+</nav>
+
+
+<main class="py-5">
+
+    <div class="container">
+
+        <div class="row justify-content-center">
+
+            <div class="col-lg-5 col-md-7">
+
+                <div class="card border-0 shadow-sm rounded-4">
+
+                    <div class="card-body p-4 p-md-5">
+
+                        <div class="text-center mb-4">
+
+                            <div class="section-label">
+                                WELCOME BACK
+                            </div>
+
+                            <h1 class="h3 mt-2">
+                                เข้าสู่ระบบ
+                            </h1>
+
+                            <p class="text-muted">
+                                กลับมาดูสูตรโปรดของคุณ
+                            </p>
+
+                        </div>
+
+
+                        <% if (registered) { %>
+
+                            <div class="alert alert-success">
+                                สมัครสมาชิกสำเร็จ
+                                กรุณาเข้าสู่ระบบ
+                            </div>
+
+                        <% } %>
+
+
+                        <% if (error) { %>
+
+                            <div class="alert alert-danger">
+                                <%= error %>
+                            </div>
+
+                        <% } %>
+
+
+                        <form
+                            action="/auth"
+                            method="POST">
+
+                            <div class="mb-3">
+
+                                <label
+                                    for="username"
+                                    class="form-label">
+
+                                    ชื่อผู้ใช้
+
+                                </label>
+
+                                <input
+                                    type="text"
+                                    class="form-control"
+                                    id="username"
+                                    name="username"
+                                    value="<%= username %>"
+                                    required>
+
+                            </div>
+
+
+                            <div class="mb-4">
+
+                                <label
+                                    for="password"
+                                    class="form-label">
+
+                                    รหัสผ่าน
+
+                                </label>
+
+                                <input
+                                    type="password"
+                                    class="form-control"
+                                    id="password"
+                                    name="password"
+                                    required>
+
+                            </div>
+
+
+                            <button
+                                type="submit"
+                                class="btn btn-recipe w-100">
+
+                                เข้าสู่ระบบ
+
+                            </button>
+
+                        </form>
+
+
+                        <div class="text-center mt-4">
+
+                            <span class="text-muted">
+                                ยังไม่มีบัญชี?
+                            </span>
+
+                            <a
+                                href="/register"
+                                class="recipe-link">
+
+                                สมัครสมาชิก
+
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</main>
+
+
+<script src="/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>

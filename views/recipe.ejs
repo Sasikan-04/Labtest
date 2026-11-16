@@ -1,0 +1,272 @@
+<!doctype html>
+<html lang="th">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title><%= recipe.title %> | Mellow Bite</title>
+
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+
+
+<%- include('partials/navbar') %>
+
+
+<main class="section-padding">
+
+    <div class="container">
+
+        <!-- BACK -->
+        <a href="#"
+            onclick="history.back(); return false;"
+            class="back-link d-inline-block mb-4">
+            ← ย้อนกลับ
+        </a>
+
+
+        <!-- TOP -->
+        <div class="row g-5 align-items-center">
+
+            <div class="col-lg-6">
+
+                <img
+                    id="recipeImage"
+                    src="/<%= recipe.image %>"
+                    alt="<%= recipe.title %>"
+                    class="recipe-detail-image">
+
+            </div>
+
+
+            <div class="col-lg-6">
+
+                <div
+                    id="recipeEnglish"
+                    class="section-label mb-2">
+                    <%= recipe.english %>
+                </div>
+
+
+                <h1
+                    id="recipeTitle"
+                    class="page-title">
+                    <%= recipe.title %>
+                </h1>
+
+
+                <form action="/favorites/toggle"
+                    method="POST"
+                    class="mt-3">
+
+                    <input
+                        type="hidden"
+                        name="recipeSlug"
+                        value="<%= recipe.slug %>">
+
+                    <button
+                        type="submit"
+                        class="btn <%= isFavorite
+                            ? 'btn-danger'
+                            : 'btn-outline-danger' %>">
+
+                        <%= isFavorite
+                            ? '♥ บันทึกแล้ว'    <!-- กด -->
+                            : '♡ บันทึกสูตร' %>   <!-- ยังไม่กด -->
+
+                    </button>
+
+                </form>
+
+
+                <p
+                    id="recipeDescription"
+                    class="section-description mt-3">
+                    <%= recipe.description %>
+                </p>
+
+
+                <div class="row g-3 mt-3">
+
+
+                    <!-- TIME -->
+                    <div class="col-6 col-md-3">
+
+                        <div class="info-box">
+
+                            <div class="info-label">
+                                เวลาเตรียม
+                            </div>
+
+                            <strong id="recipeTime">
+                                <%= recipe.time_text %>
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- DIFFICULTY -->
+                    <div class="col-6 col-md-3">
+
+                        <div class="info-box">
+
+                            <div class="info-label">
+                                ระดับ
+                            </div>
+
+                            <strong id="recipeDifficulty">
+                                <%= recipe.difficulty %>
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- SERVES -->
+                    <div class="col-6 col-md-3">
+
+                        <div class="info-box">
+
+                            <div class="info-label">
+                                จำนวนเสิร์ฟ
+                            </div>
+
+                            <strong id="recipeServes">
+                                <%= recipe.serves %>
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- INGREDIENT COUNT -->
+                    <div class="col-6 col-md-3">
+
+                        <div class="info-box">
+
+                            <div class="info-label">
+                                วัตถุดิบ
+                            </div>
+<!-- นับจน.วัตถุดิบ -->
+                            <strong id="ingredientCount">
+                                <%= recipe.ingredients.length %> รายการ
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- INGREDIENTS + METHOD -->
+        <div class="row g-5 mt-5">
+
+
+            <!-- INGREDIENTS -->
+            <div class="col-lg-5">
+
+                <div class="section-label">
+                    INGREDIENTS
+                </div>
+
+                <h2 class="mb-4">
+                    วัตถุดิบ
+                </h2>
+
+
+                <div class="ingredients-box">
+
+                    <div id="ingredientList">
+<!-- วนแสดงวัตถุดิบ -->
+                        <% recipe.ingredients.forEach(function (ingredient) { %>
+
+                            <div class="ingredient-item">
+                                ◉ <%= ingredient %>
+                            </div>
+
+                        <% }); %>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- METHOD -->
+            <div class="col-lg-7">
+
+                <div class="section-label">
+                    METHOD
+                </div>
+
+                <h2 class="mb-4">
+                    วิธีทำ
+                </h2>
+
+
+                <div id="stepList">
+
+                    <% recipe.steps.forEach(function (step, index) { %>
+
+                        <div class="step-item">
+
+                            <div class="step-number">
+                                <%= index + 1 %>
+                            </div>
+
+                            <div class="pt-2">
+                                <%= step %>
+                            </div>
+
+                        </div>
+
+                    <% }); %>
+
+                </div>
+
+
+                <!-- TIP -->
+                <div class="tip-card mt-4">
+
+                    <h5>
+                        💡 เคล็ดลับให้อร่อยขึ้น
+                    </h5>
+
+                    <p
+                        id="recipeTip"
+                        class="mb-0 text-muted">
+                        <%= recipe.tip %>
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</main>
+
+
+<script src="/js/bootstrap.bundle.min.js"></script>
+<script src="/js/script.js"></script>
+
+</body>
+
+</html>

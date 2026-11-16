@@ -1,0 +1,598 @@
+<!doctype html>
+<html lang="th">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Mellow Bite | หน้าแรก</title>
+
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+<!-- ================= NAVBAR ================= -->
+
+
+<%- include('partials/navbar') %>
+
+
+<!-- ================= HERO ================= -->
+
+<header class="home-hero">
+    <div class="container">
+        <div class="row align-items-center g-5">
+
+            <div class="col-lg-5">
+
+                <div class="section-label mb-3">
+                    ✦ MELLOW BITE · วันนี้กินอะไรดี
+                </div>
+
+                <h1 class="hero-title">
+                    วันนี้<br>
+                    อยากกินอะไรดี?
+                </h1>
+
+                <p class="hero-text mt-3">
+                    รวมเมนูน่ากิน ทำตามง่าย สำหรับวันที่คิดไม่ออกว่าจะกินอะไร
+                </p>
+
+            </div>
+
+            <div class="col-lg-7">
+                <img src="assets/images/hero-food-table.jpg"
+                    class="hero-image"
+                    alt="โต๊ะอาหาร">
+            </div>
+
+        </div>
+    </div>
+</header>
+
+
+<!-- ================= TODAY'S PICK ================= -->
+
+<section class="section-padding">
+    <div class="container">
+
+        <div class="text-center mb-5">
+            <div class="section-label">TODAY'S PICK</div>
+            <h2 class="section-title">เมนูแนะนำวันนี้</h2>
+        </div>
+
+        <div class="feature-card">
+            <div class="row g-0 align-items-stretch">
+
+                <div class="col-lg-7">
+                    <img src="assets/images/matcha-tiramisu.jpg"
+                        class="feature-image"
+                        alt="มัทฉะทีรามิสุ">
+                </div>
+
+                <div class="col-lg-5 p-4 p-lg-5 d-flex flex-column justify-content-center">
+
+                    <div class="section-label mb-2">
+                        MATCHA TIRAMISU
+                    </div>
+
+                    <h2>มัทฉะทีรามิสุ</h2>
+
+                    <p class="section-description">
+                        ทีรามิสุเนื้อนุ่ม หอมมัทฉะ เข้มกำลังดี
+                        หวานน้อย กินเย็น ๆ ยิ่งอร่อย
+                    </p>
+
+                    <div class="recipe-meta mb-3">
+                        ◷ 30 นาที
+                        <span class="difficulty-badge ms-2">✓ ง่าย</span>
+                        <span class="ms-2">6 วัตถุดิบ</span>
+                    </div>
+
+                    <div class="mb-4">
+                        <span class="ingredient-chip">มัทฉะ</span>
+                        <span class="ingredient-chip">มาสคาร์โปเน</span>
+                        <span class="ingredient-chip">วิปครีม</span>
+                        <span class="ingredient-chip">เลดี้ฟิงเกอร์</span>
+                    </div>
+
+                    <div>
+                        <a href="recipe.html?id=matcha-tiramisu"
+                            class="btn btn-recipe">
+                            ดูสูตร →
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+
+<!-- ================= EDITORIAL ================= -->
+
+<section class="pb-5">
+    <div class="container">
+
+        <div class="text-center mb-5">
+            <div class="section-label">EDITORIAL PICKS</div>
+            <h2 class="section-title">เมนูคัดสรรพิเศษ</h2>
+        </div>
+
+
+        <!-- PASTA -->
+
+        <div class="row editorial-row align-items-center g-5">
+
+            <div class="col-lg-7">
+                <img src="assets/images/creamy-truffle-pasta.jpg"
+                    class="editorial-image"
+                    alt="ครีมมี่ทรัฟเฟิลพาสต้า">
+            </div>
+
+            <div class="col-lg-5">
+
+                <div class="section-label">
+                    CREAMY TRUFFLE PASTA
+                </div>
+
+                <h2 class="mt-2">
+                    ครีมมี่ทรัฟเฟิลพาสต้า
+                </h2>
+
+                <p class="section-description">
+                    พาสต้าซอสครีมหอมทรัฟเฟิล เนื้อซอสเนียนนุ่ม
+                    ทำง่ายแต่หน้าตาเหมือนร้าน
+                </p>
+
+                <p class="recipe-meta">
+                    ◷ 25 นาที
+                    <span class="difficulty-badge ms-2">✓ ง่าย</span>
+                </p>
+
+                <div class="mb-3">
+                    <span class="ingredient-chip">เส้นพาสต้า</span>
+                    <span class="ingredient-chip">ครีม</span>
+                    <span class="ingredient-chip">เห็ด</span>
+                    <span class="ingredient-chip">พาร์เมซาน</span>
+                </div>
+
+                <a href="recipe.html?id=creamy-truffle-pasta"
+                    class="btn btn-recipe">
+                    ดูสูตร →
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <!-- FRENCH TOAST -->
+
+        <div class="row editorial-row align-items-center g-5">
+
+            <div class="col-lg-5 order-2 order-lg-1">
+
+                <div class="section-label">
+                    STRAWBERRY FRENCH TOAST
+                </div>
+
+                <h2 class="mt-2">
+                    สตรอว์เบอร์รีเฟรนช์โทสต์
+                </h2>
+
+                <p class="section-description">
+                    เฟรนช์โทสต์หอมเนย เสิร์ฟกับสตรอว์เบอร์รีสด
+                    และครีมนุ่ม ๆ
+                </p>
+
+                <p class="recipe-meta">
+                    ◷ 15 นาที
+                    <span class="difficulty-badge ms-2">✓ ง่ายมาก</span>
+                </p>
+
+                <div class="mb-3">
+                    <span class="ingredient-chip">ขนมปัง</span>
+                    <span class="ingredient-chip">ไข่</span>
+                    <span class="ingredient-chip">นม</span>
+                    <span class="ingredient-chip">สตรอว์เบอร์รี</span>
+                </div>
+
+                <a href="recipe.html?id=strawberry-french-toast"
+                    class="btn btn-recipe">
+                    ดูสูตร →
+                </a>
+
+            </div>
+
+            <div class="col-lg-7 order-1 order-lg-2">
+                <img src="assets/images/strawberry-french-toast.jpg"
+                    class="editorial-image"
+                    alt="สตรอว์เบอร์รีเฟรนช์โทสต์">
+            </div>
+
+        </div>
+
+
+        <!-- YUZU -->
+
+        <div class="row editorial-row align-items-center g-5">
+
+            <div class="col-lg-7">
+                <img src="assets/images/yuzu-honey-soda.jpg"
+                    class="editorial-image"
+                    alt="ยูซุน้ำผึ้งโซดา">
+            </div>
+
+            <div class="col-lg-5">
+
+                <div class="section-label">
+                    YUZU HONEY SODA
+                </div>
+
+                <h2 class="mt-2">
+                    ยูซุน้ำผึ้งโซดา
+                </h2>
+
+                <p class="section-description">
+                    เครื่องดื่มสดชื่น หอมยูซุ เปรี้ยวหวานกำลังดี
+                    ทำได้ในไม่กี่นาที
+                </p>
+
+                <p class="recipe-meta">
+                    ◷ 5 นาที
+                    <span class="difficulty-badge ms-2">✓ ง่ายมาก</span>
+                </p>
+
+                <a href="recipe.html?id=yuzu-honey-soda"
+                    class="btn btn-recipe">
+                    ดูสูตร →
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+
+<!-- ================= POPULAR ================= -->
+
+<section class="section-padding popular-section">
+    <div class="container">
+
+        <div class="text-center mb-5">
+            <div class="section-label">POPULAR THIS WEEK</div>
+            <h2 class="section-title">เมนูฮิตสัปดาห์นี้</h2>
+        </div>
+
+        <div class="row g-4">
+
+            <div class="col-lg-3 col-md-6">
+                <div class="card recipe-card h-100 position-relative">
+
+                    <span class="category-badge">อาหารจานหลัก</span>
+
+                    <img src="assets/images/salmon-teriyaki-bowl.jpg"
+                        alt="ข้าวหน้าแซลมอนเทอริยากิ">
+
+                    <div class="card-body">
+
+                        <h5 class="recipe-title">
+                            ข้าวหน้าแซลมอนเทอริยากิ
+                        </h5>
+
+                        <div class="recipe-en">
+                            Salmon Teriyaki Bowl
+                        </div>
+
+                        <div class="recipe-meta mt-2">
+                            ◷ 30 นาที
+                            <span class="difficulty-badge ms-1">
+                                ปานกลาง
+                            </span>
+                        </div>
+
+                        <a href="recipe.html?id=salmon-teriyaki-bowl"
+                            class="recipe-link d-block mt-3">
+                            ดูสูตร →
+                        </a>
+
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="col-lg-3 col-md-6">
+                <div class="card recipe-card h-100 position-relative">
+
+                    <span class="category-badge badge-sage">
+                        เครื่องดื่ม
+                    </span>
+
+                    <img src="assets/images/strawberry-matcha-latte.jpg"
+                        alt="สตรอว์เบอร์รีมัทฉะลาเต้">
+
+                    <div class="card-body">
+
+                        <h5 class="recipe-title">
+                            สตรอว์เบอร์รีมัทฉะลาเต้
+                        </h5>
+
+                        <div class="recipe-en">
+                            Strawberry Matcha Latte
+                        </div>
+
+                        <div class="recipe-meta mt-2">
+                            ◷ 10 นาที
+                            <span class="difficulty-badge ms-1">
+                                ง่ายมาก
+                            </span>
+                        </div>
+
+                        <a href="recipe.html?id=strawberry-matcha-latte"
+                            class="recipe-link d-block mt-3">
+                            ดูสูตร →
+                        </a>
+
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="col-lg-3 col-md-6">
+                <div class="card recipe-card h-100 position-relative">
+
+                    <span class="category-badge">
+                        ของหวาน
+                    </span>
+
+                    <img src="assets/images/biscoff-cheesecake.jpg"
+                        alt="บิสคอฟชีสเค้ก">
+
+                    <div class="card-body">
+
+                        <h5 class="recipe-title">
+                            บิสคอฟชีสเค้ก
+                        </h5>
+
+                        <div class="recipe-en">
+                            Biscoff Cheesecake
+                        </div>
+
+                        <div class="recipe-meta mt-2">
+                            ◷ 45 นาที
+                            <span class="difficulty-badge ms-1">
+                                ปานกลาง
+                            </span>
+                        </div>
+
+                        <a href="recipe.html?id=biscoff-cheesecake"
+                            class="recipe-link d-block mt-3">
+                            ดูสูตร →
+                        </a>
+
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="col-lg-3 col-md-6">
+                <div class="card recipe-card h-100 position-relative">
+
+                    <span class="category-badge">
+                        อาหารจานหลัก
+                    </span>
+
+                    <img src="assets/images/garlic-butter-chicken.jpg"
+                        alt="ไก่กระเทียมเนย">
+
+                    <div class="card-body">
+
+                        <h5 class="recipe-title">
+                            ไก่กระเทียมเนย
+                        </h5>
+
+                        <div class="recipe-en">
+                            Garlic Butter Chicken
+                        </div>
+
+                        <div class="recipe-meta mt-2">
+                            ◷ 25 นาที
+                            <span class="difficulty-badge ms-1">
+                                ง่าย
+                            </span>
+                        </div>
+
+                        <a href="recipe.html?id=garlic-butter-chicken"
+                            class="recipe-link d-block mt-3">
+                            ดูสูตร →
+                        </a>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- ================= CATEGORIES ================= -->
+
+<section class="section-padding">
+
+    <div class="container">
+
+        <div class="text-center mb-5">
+            <div class="section-label">BROWSE BY MOOD</div>
+            <h2 class="section-title">เลือกตามหมวดหมู่</h2>
+        </div>
+
+        <div class="row g-4">
+
+            <div class="col-lg-4">
+                <a href="main-dishes.html">
+
+                    <div class="category-card category-pink
+                                d-flex align-items-center
+                                justify-content-between">
+
+                        <div class="p-4">
+
+                            <div class="section-label">
+                                MAIN DISHES
+                            </div>
+
+                            <h3 class="mt-2">
+                                อาหารจานหลัก
+                            </h3>
+
+                            <span class="text-dark">
+                                ดูเมนูทั้งหมด →
+                            </span>
+
+                        </div>
+
+                        <img src="assets/images/creamy-truffle-pasta.jpg"
+                            alt="อาหารจานหลัก">
+
+                    </div>
+
+                </a>
+            </div>
+
+
+            <div class="col-lg-4">
+                <a href="desserts.html">
+
+                    <div class="category-card category-pink
+                                d-flex align-items-center
+                                justify-content-between">
+
+                        <div class="p-4">
+
+                            <div class="section-label">
+                                DESSERTS
+                            </div>
+
+                            <h3 class="mt-2">
+                                ของหวาน
+                            </h3>
+
+                            <span class="text-dark">
+                                ดูเมนูทั้งหมด →
+                            </span>
+
+                        </div>
+
+                        <img src="assets/images/matcha-tiramisu.jpg"
+                            alt="ของหวาน">
+
+                    </div>
+
+                </a>
+            </div>
+
+
+            <div class="col-lg-4">
+                <a href="drinks.html">
+
+                    <div class="category-card category-sage
+                                d-flex align-items-center
+                                justify-content-between">
+
+                        <div class="p-4">
+
+                            <div class="section-label">
+                                DRINKS
+                            </div>
+
+                            <h3 class="mt-2">
+                                เครื่องดื่ม
+                            </h3>
+
+                            <span class="text-dark">
+                                ดูเมนูทั้งหมด →
+                            </span>
+
+                        </div>
+
+                        <img src="assets/images/yuzu-honey-soda.jpg"
+                            alt="เครื่องดื่ม">
+
+                    </div>
+
+                </a>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer class="main-footer">
+    <div class="container">
+
+        <div class="row g-4">
+
+            <div class="col-md-6">
+
+                <h5>Mellow Bite</h5>
+
+                <p class="text-muted">
+                    สูตรง่าย ๆ สำหรับทุกวันที่อยากกินของอร่อย
+                </p>
+
+            </div>
+
+
+            <div class="col-md-3">
+
+                <h6>เมนู</h6>
+
+                <a href="index.html" class="footer-link">หน้าแรก</a>
+                <a href="main-dishes.html" class="footer-link">อาหารจานหลัก</a>
+                <a href="desserts.html" class="footer-link">ของหวาน</a>
+                <a href="drinks.html" class="footer-link">เครื่องดื่ม</a>
+                <a href="quick-easy.html" class="footer-link">ทำง่าย</a>
+
+            </div>
+
+
+            <div class="col-md-3">
+
+                <div class="p-3 rounded-4"
+                    style="background-color: var(--yellow-light);">
+
+                    <strong>วันนี้อยากกินอะไรดี?</strong>
+
+                    <div class="small text-muted mt-1">
+                        ให้ Mellow Bite ช่วยเป็นไอเดียให้ทุกวัน
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <hr class="mt-5">
+
+        <div class="small text-muted">
+            Mellow Bite
+        </div>
+
+    </div>
+</footer>
+
+<script src="js/bootstrap.bundle.min.js"></script>
+<script src="js/script.js"></script>
+
+</body>
+</html>

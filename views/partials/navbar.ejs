@@ -1,0 +1,138 @@
+<!-- Mellow Bite ของเธอมีทั้งหมด 8 หน้า และแต่ละหน้าก็มีโค้ด Navbar ของตัวเอง -->
+<!-- ทุกหน้าเรียกมาใช้ร่วมกันได้ -->
+<nav class="navbar navbar-expand-lg main-navbar">
+    <div class="container">
+
+        <a class="navbar-brand d-flex align-items-center" href="/">
+            <span class="brand-icon">✦</span>
+            Mellow Bite
+        </a>
+
+        <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#mainNavbar">
+
+            <span class="navbar-toggler-icon"></span>
+
+        </button>
+
+
+        <div
+            class="collapse navbar-collapse"
+            id="mainNavbar">
+
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+                <li class="nav-item">
+                    <a
+                        class="nav-link"
+                        href="/">
+                        หน้าแรก
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a
+                        class="nav-link"
+                        href="/main-dishes">
+                        อาหารจานหลัก
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a
+                        class="nav-link"
+                        href="/desserts">
+                        ของหวาน
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a
+                        class="nav-link"
+                        href="/drinks">
+                        เครื่องดื่ม
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a
+                        class="nav-link"
+                        href="/quick-easy">
+                        ทำง่าย
+                    </a>
+                </li>
+
+
+                <% if (currentUser) { %>
+
+                    <li class="nav-item">
+                        <a
+                            class="nav-link"
+                            href="/favorites">
+
+                            ♡ สูตรที่บันทึก
+
+                        </a>
+                    </li>
+
+                <% } %>
+
+            </ul>
+
+
+            <div class="d-flex align-items-center gap-2">
+
+                <% if (!currentUser) { %>
+
+                    <a
+                        href="/login"
+                        class="btn btn-outline-dark btn-sm">
+
+                        เข้าสู่ระบบ
+
+                    </a>
+
+                    <a
+                        href="/register"
+                        class="btn btn-recipe btn-sm">
+
+                        สมัครสมาชิก
+
+                    </a>
+
+
+                <% } else { %>
+
+                    <span class="small">
+                        สวัสดี,
+                        <strong>
+                            <%= currentUser.username %>
+                        </strong>
+                    </span>
+
+                    <form
+                        action="/signout"
+                        method="POST"
+                        class="m-0">
+
+                        <button
+                            type="submit"
+                            class="btn btn-outline-dark btn-sm">
+
+                            ออกจากระบบ
+
+                        </button>
+
+                    </form>
+
+                <% } %>
+
+            </div>
+
+        </div>
+
+    </div>
+</nav>
