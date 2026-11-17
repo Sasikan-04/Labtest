@@ -172,24 +172,60 @@ function normalizeIp(ip) {
 
 
 
+function getClientIp(req) {
 
+    const forwardedFor =
+        req.headers['x-forwarded-for'];
+
+    let ip;
+
+    if (forwardedFor) {
+
+        ip = forwardedFor
+            .split(',')[0]
+            .trim();
+
+    } else {
+
+        ip =
+            req.socket.remoteAddress;
+
+    }
+
+    return normalizeIp(ip);
+}
 
 
 //-------------Routes (สั่งเซิฟเว่อ)---------------
 
-app.get( ['/', '/index.html'],                           //นำไฟล์ views/index.ejs มาสร้าง HTML ส่งกลับ
+app.get(
+    ['/', '/index.html'], // นำไฟล์ views/index.ejs มาสร้าง HTML ส่งกลับ
+
     async (req, res) => {
 
         try {
 
+            /* =========================
+               GET VISITOR IP
+               ========================= */
+
             const ipAddress =
-                normalizeIp(req.ip);
+                getClientIp(req);
+
+
+            /* =========================
+            GET BANGKOK DATE / TIME
+               ========================= */
 
             const bangkok =
                 getBangkokDateTime();
 
 
-            const [visitorResult] = await pool.query(
+            /* =========================
+            RECORD VISITOR
+               ========================= */
+
+            await pool.query(
                 `
                 INSERT INTO home_visitors (
                     ip_address,
@@ -197,6 +233,7 @@ app.get( ['/', '/index.html'],                           //นำไฟล์ vi
                     first_visit_at,
                     last_visit_at
                 )
+
                 VALUES (?, ?, ?, ?)
 
                 ON DUPLICATE KEY UPDATE
@@ -211,12 +248,10 @@ app.get( ['/', '/index.html'],                           //นำไฟล์ vi
                 ]
             );
 
-            console.log('Visitor IP:', ipAddress);
-            console.log('Bangkok date:', bangkok.date);
-            console.log('Insert result:', visitorResult);
 
-
-            /* นับ Visitor ทั้งหมด */
+            /* =========================
+            COUNT ALL VISITORS
+               ========================= */
 
             const [totalRows] =
                 await pool.query(
@@ -227,7 +262,9 @@ app.get( ['/', '/index.html'],                           //นำไฟล์ vi
                 );
 
 
-            /* นับ Visitor วันนี้ */
+            /* =========================
+            COUNT TODAY'S VISITORS
+               ========================= */
 
             const [todayRows] =
                 await pool.query(
@@ -236,9 +273,15 @@ app.get( ['/', '/index.html'],                           //นำไฟล์ vi
                     FROM home_visitors
                     WHERE visit_date = ?
                     `,
-                    [bangkok.date]
+                    [
+                        bangkok.date
+                    ]
                 );
 
+
+            /* =========================
+            RENDER HOME
+               ========================= */
 
             return res.render(
                 'index',
