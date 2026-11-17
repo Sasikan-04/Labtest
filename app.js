@@ -112,12 +112,167 @@ function requireLogin(req, res, next) {
     return res.redirect('/login');
 }
 
+//เพิ่มเฮ้วเปอร์   ---------Visitor Counter--------
+function getBangkokDateTime() {     //บังคับวันเวลาให้เป็น Asia/Bangkok
+
+    const now = new Date();
+
+    const parts =
+        new Intl.DateTimeFormat(
+            'en-GB',
+            {
+                timeZone: 'Asia/Bangkok',
+                year: 'numeric',
+                month: '2-digit',
+                day: '2-digit',
+                hour: '2-digit',
+                minute: '2-digit',
+                second: '2-digit',
+                hourCycle: 'h23'
+            }
+        ).formatToParts(now);
+
+
+    const getPart = (type) =>
+        parts.find(
+            part => part.type === type
+        ).value;
+
+
+    const year = getPart('year');
+    const month = getPart('month');
+    const day = getPart('day');
+
+    const hour = getPart('hour');
+    const minute = getPart('minute');
+    const second = getPart('second');
+
+
+    return {
+        date: `${year}-${month}-${day}`,
+
+        dateTime:
+            `${year}-${month}-${day} ` +
+            `${hour}:${minute}:${second}`
+    };
+}
+
+//จัดรูป IP ให้เรียบร้อย
+function normalizeIp(ip) {
+
+    if (
+        ip &&
+        ip.startsWith('::ffff:')
+    ) {
+        return ip.substring(7);
+    }
+
+    return ip;
+}
+
+
+
+
 
 
 //-------------Routes (สั่งเซิฟเว่อ)---------------
-app.get(['/', '/index.html'], (req, res) => {
-    res.render('index');  //นำไฟล์ views/index.ejs มาสร้าง HTML ส่งกลับ
-});
+
+app.get( ['/', '/index.html'],                           //นำไฟล์ views/index.ejs มาสร้าง HTML ส่งกลับ
+    async (req, res) => {
+
+        try {
+
+            const ipAddress =
+                normalizeIp(req.ip);
+
+            const bangkok =
+                getBangkokDateTime();
+
+
+            const [visitorResult] = await pool.query(
+                `
+                INSERT INTO home_visitors (
+                    ip_address,
+                    visit_date,
+                    first_visit_at,
+                    last_visit_at
+                )
+                VALUES (?, ?, ?, ?)
+
+                ON DUPLICATE KEY UPDATE
+                    last_visit_at = ?
+                `,
+                [
+                    ipAddress,
+                    bangkok.date,
+                    bangkok.dateTime,
+                    bangkok.dateTime,
+                    bangkok.dateTime
+                ]
+            );
+
+            console.log('Visitor IP:', ipAddress);
+            console.log('Bangkok date:', bangkok.date);
+            console.log('Insert result:', visitorResult);
+
+
+            /* นับ Visitor ทั้งหมด */
+
+            const [totalRows] =
+                await pool.query(
+                    `
+                    SELECT COUNT(*) AS total
+                    FROM home_visitors
+                    `
+                );
+
+
+            /* นับ Visitor วันนี้ */
+
+            const [todayRows] =
+                await pool.query(
+                    `
+                    SELECT COUNT(*) AS total
+                    FROM home_visitors
+                    WHERE visit_date = ?
+                    `,
+                    [bangkok.date]
+                );
+
+
+            return res.render(
+                'index',
+                {
+                    visitorCount:
+                        totalRows[0].total,
+
+                    todayVisitorCount:
+                        todayRows[0].total
+                }
+            );
+
+
+        } catch (error) {
+
+            console.error(
+                'Visitor counter error:',
+                error
+            );
+
+
+            return res.render(
+                'index',
+                {
+                    visitorCount: 0,
+                    todayVisitorCount: 0
+                }
+            );
+
+        }
+
+    }
+);
+
 
 //เอาสูตรทั้งหมดในcategory ที่เป็น main-dishes จาก Database แล้วส่งไปให้ main-dishes.ejs ในตัวแปรชื่อ recipes
 app.get(['/main-dishes', '/main-dishes.html'],
